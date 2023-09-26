@@ -1,0 +1,94 @@
+body{
+    margin: 0px 0px;
+    text-align: center;
+    background-color: #f0f3f5;
+    font-family: 'Palanquin',serif;
+    color:#dbb42c;
+}
+
+header{
+    background-color: #304c89;
+    padding: 20px 25px;
+}
+
+.hero-image{
+    margin-bottom: 20px;
+}
+
+#hero-title {
+    /* color:#304c89; */
+    color: #dbb42c;
+    text-align: center;
+    font-family: 'Dancing Script',
+        cursive;
+    font-size: 50px;
+    text-shadow: 1px 1px 3px black;
+
+}
+
+
+
+.navbar {
+    
+    padding: 5px 10px;
+    list-style-type: none;
+    /* Remove bullets */
+    display: flex;
+    justify-content: center;
+}
+
+
+#about-home, #testimonials-home{
+    display: flex;
+
+}
+
+.about-section, .testimonials-section, .rewire-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 400;
+    padding: 75px 75px;
+    background-color: #304c89;
+    border: 10px solid #f0f3f5;
+    
+}
+
+
+
+a {
+    padding: 5px 10px;
+    background-color: #dbb42c;
+    /* background-color: #304c89; */
+    border: 1px solid black;
+    border-radius: 25px;
+    color: black;
+    font-size: 16px;
+    font-family: 'Palanquin',
+        serif;
+    text-decoration: none; /* Remove underline */
+    
+}
+
+/* Hover effect for the buttons  */
+a:hover{
+    background-color: #b69121;
+    /* make transparent */
+    background: #f0f3f5;
+
+}
+
+/* Footer for the page  */
+.footer{
+    color: #dbb42c;
+    position: fixed; 
+    bottom: 0; /* stick to the bottom */
+    width: 100%; /* full width */
+    
+}
+
+
+font family{
+    font-family: 'Palanquin', sans-serif;
+    font-family: 'Dancing Script', cursive;
+}
