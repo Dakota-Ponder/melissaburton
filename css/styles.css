@@ -1,93 +1,64 @@
-body{
-    margin: 0px 0px;
+/* font-family: 'Palanquin',
+serif; */
+/* font-family: 'Dancing Script',
+cursive; */
+
+
+body {
+    font-family: 'Palanquin',
+    serif;
+    margin: 40px;
+    line-height: 1.6;
     text-align: center;
-    background-color: #f0f3f5;
-    font-family: 'Palanquin',serif;
-    color:#dbb42c;
+}
+h1{
+    font-family: 'Dancing Script',
+    cursive;
+}
+h1,
+h2 {
+    color: #333;
 }
 
-header{
-    background-color: #304c89;
-    padding: 20px 25px;
-}
-
-.hero-image{
+p {
     margin-bottom: 20px;
 }
 
-#hero-title {
-    /* color:#304c89; */
-    color: #dbb42c;
-    text-align: center;
-    font-family: 'Dancing Script',
-        cursive;
-    font-size: 50px;
-    text-shadow: 1px 1px 3px black;
-
-}
-
-
-
-.navbar {
-    
-    padding: 5px 10px;
+nav ul {
+    display: flex;
+    justify-content: space-around;
     list-style-type: none;
-    /* Remove bullets */
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+#features {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-
-#about-home, #testimonials-home{
-    display: flex;
-
+.feature {
+    flex: 0 1 calc(50% - 10px);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
-.about-section, .testimonials-section, .rewire-section{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 400;
-    padding: 75px 75px;
-    background-color: #304c89;
-    border: 10px solid #f0f3f5;
-    
+@media (max-width: 768px) {
+    .feature {
+        flex: 1 1 100%;
+    }
 }
 
-
-
-a {
-    padding: 5px 10px;
-    background-color: #dbb42c;
-    /* background-color: #304c89; */
-    border: 1px solid black;
-    border-radius: 25px;
-    color: black;
-    font-size: 16px;
-    font-family: 'Palanquin',
-        serif;
-    text-decoration: none; /* Remove underline */
-    
+footer {
+    text-align: center;
+    margin-top: 40px;
 }
-
-/* Hover effect for the buttons  */
-a:hover{
-    background-color: #b69121;
-    /* make transparent */
-    background: #f0f3f5;
-
-}
-
-/* Footer for the page  */
-.footer{
-    color: #dbb42c;
-    position: fixed; 
-    bottom: 0; /* stick to the bottom */
-    width: 100%; /* full width */
-    
-}
-
-
 font family{
     font-family: 'Palanquin', sans-serif;
     font-family: 'Dancing Script', cursive;
