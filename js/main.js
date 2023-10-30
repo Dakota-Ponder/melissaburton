@@ -1,4 +1,5 @@
 (function ($) {
+  // variables for the main DOM elements
   var $window = $(window),
     $body = $("body"),
     $wrapper = $("#wrapper"),
@@ -7,7 +8,7 @@
     $main = $("#main"),
     $main_articles = $main.children("article");
 
-  // Breakpoints.
+  // Define the breakpoints for responsive design
   breakpoints({
     xlarge: ["1281px", "1680px"],
     large: ["981px", "1280px"],
@@ -17,19 +18,21 @@
     xxsmall: [null, "360px"],
   });
 
-  // Play initial animations on page load.
+  // Play initial animations on page load by removing the
+  // "is-preload" class from the body
   $window.on("load", function () {
     window.setTimeout(function () {
       $body.removeClass("is-preload");
     }, 100);
   });
 
-  // Fix: Flexbox min-height bug on IE.
+  // Fix: Flexbox min-height bug on Internet Explorer.
   if (browser.name == "ie") {
     var flexboxFixTimeoutId;
 
     $window
       .on("resize.flexbox-fix", function () {
+        // adjust the height based on content size and viewport size
         clearTimeout(flexboxFixTimeoutId);
 
         flexboxFixTimeoutId = setTimeout(function () {
@@ -41,7 +44,7 @@
       .triggerHandler("resize.flexbox-fix");
   }
 
-  // Nav.
+  // setup for the navbar
   var $nav = $header.children("nav"),
     $nav_li = $nav.find("li");
 
@@ -51,12 +54,13 @@
     $nav_li.eq($nav_li.length / 2).addClass("is-middle");
   }
 
-  // Main.
+  // Main article visibility and transition handling
   var delay = 325,
     locked = false;
 
-  // Methods.
+  // Show specific article
   $main._show = function (id, initial) {
+    // manages the showing of the article
     var $article = $main_articles.filter("#" + id);
 
     // No such article? Bail.
@@ -164,13 +168,14 @@
     }
   };
 
+  // hide the currently visible article so that the new one can be shown
   $main._hide = function (addState) {
     var $article = $main_articles.filter(".active");
 
     // Article not visible? Bail.
     if (!$body.hasClass("is-article-visible")) return;
 
-    // Add state?
+    // add state to the history so that the back button works
     if (typeof addState != "undefined" && addState === true)
       history.pushState(null, null, "#");
 
@@ -201,7 +206,8 @@
       // Unmark as switching.
       $body.removeClass("is-switching");
 
-      // Window stuff.
+      // set the scroll position to the top of the page
+      // and trigger a resize event to fix the flexbox bug
       $window.scrollTop(0).triggerHandler("resize.flexbox-fix");
 
       return;
@@ -227,10 +233,11 @@
       setTimeout(function () {
         $body.removeClass("is-article-visible");
 
-        // Window stuff.
+        // // set the scroll position to the top of the page
+        // and trigger a resize event to fix the flexbox bug
         $window.scrollTop(0).triggerHandler("resize.flexbox-fix");
 
-        // Unlock.
+        // Unlock and unmark as switching.
         setTimeout(function () {
           locked = false;
         }, delay);
@@ -238,11 +245,13 @@
     }, delay);
   };
 
-  // Articles.
+  // close functionality for the articles
   $main_articles.each(function () {
+    // this is the article that is being closed
     var $this = $(this);
 
-    // Close.
+    // append the close button to the article
+    // and add a click handler to close the article
     $('<div class="close">Close</div>')
       .appendTo($this)
       .on("click", function () {
@@ -250,17 +259,20 @@
       });
 
     // Prevent clicks from inside article from bubbling.
+    // this prevents the article from closing when clicking inside the article
     $this.on("click", function (event) {
       event.stopPropagation();
     });
   });
 
-  // Events.
+  // Events Handlers
+  // if the body is clicked and is visible, hide the article
   $body.on("click", function (event) {
     // Article visible? Hide.
     if ($body.hasClass("is-article-visible")) $main._hide(true);
   });
 
+  // Key up event for escape key to hide article.
   $window.on("keyup", function (event) {
     switch (event.keyCode) {
       case 27:
@@ -274,6 +286,7 @@
     }
   });
 
+  // event for changing the URL hash
   $window.on("hashchange", function (event) {
     // Empty hash?
     if (location.hash == "" || location.hash == "#") {
