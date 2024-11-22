@@ -133,6 +133,7 @@ table {
 
 body {
   -webkit-text-size-adjust: none;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Adjust the shadow values */
 }
 
 mark {
@@ -1856,4 +1857,44 @@ body.is-preload #footer {
 
 .carousel-controls button:hover {
   background: rgba(255, 255, 255, 0.4);
+}
+
+/* Call to action  */
+#cta {
+  text-align: center;
+  color: #ffffff;
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+  border-radius: 4px;
+}
+
+#cta h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+#cta p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+#cta .button {
+  display: inline-flex; /* Ensure flexbox is used */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  padding: 0.75rem 2rem; /* Adjust padding for proper size */
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1b1f22;
+  background: #ffffff;
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+#cta .button:hover {
+  background-color: #ddd;
 }
