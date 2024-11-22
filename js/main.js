@@ -327,6 +327,43 @@
       });
   }
 
+  // testimonials section
+  // Testimonials Carousel (Auto-Rotate)
+  (function () {
+    const carousel = document.querySelector(".carousel");
+    const testimonials = carousel.querySelectorAll(".testimonial");
+    let currentIndex = 0;
+    let autoRotate = setInterval(nextTestimonial, 5000); // Start auto-rotation
+
+    // Pause rotation on mouseover and resume on mouseout
+    carousel.addEventListener("mouseover", () => clearInterval(autoRotate));
+    carousel.addEventListener(
+      "mouseout",
+      () => (autoRotate = setInterval(nextTestimonial, 5000))
+    );
+
+    function showTestimonial(index) {
+      testimonials.forEach((testimonial, i) => {
+        if (i === index) {
+          testimonial.classList.add("active");
+        } else {
+          testimonial.classList.remove("active");
+        }
+      });
+    }
+
+    function nextTestimonial() {
+      currentIndex = (currentIndex + 1) % testimonials.length;
+      showTestimonial(currentIndex);
+    }
+
+    // Automatically rotate testimonials every 10 seconds
+    setInterval(nextTestimonial, 10000);
+
+    // Initialize
+    showTestimonial(currentIndex);
+  })();
+
   // Initialize.
 
   // Hide main, articles.
